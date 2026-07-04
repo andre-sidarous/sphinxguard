@@ -32,7 +32,7 @@ export default function LoginPage() {
             })
             localStorage.setItem('access_token', res.data.access_token)
             localStorage.setItem('user_id', res.data.user_id)
-            toast.success('Welcome to FinShield!')
+            toast.success('Welcome to SphinxGuard!')
             router.push('/dashboard')
            }
         } catch (err: any) {
@@ -47,7 +47,7 @@ export default function LoginPage() {
             <Toaster />
             <div className="w-full max-w-md bg-gray-900 rounded-2xl p-8 border-gray-800">
                 <div className="mb-8">
-                    <h1 className="text-2xl font-bold text-white">FinShield</h1>
+                    <h1 className="text-2xl font-bold text-white">SphinxGuard</h1>
                     <p className="text-gray-400 mt-1">
                         {isSignup ? 'Create your account' : 'Sign in to your account'}
                     </p>

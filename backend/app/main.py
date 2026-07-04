@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes.auth import router as auth_router
 
-app = FastAPI(title="FinShield API", version="1.0.0")
+app = FastAPI(title="SphinxGuard API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -16,7 +16,7 @@ app.include_router(auth_router)
 
 @app.get("/")
 def root():
-    return {"message": "FinShield API is running"}
+    return {"message": "SphinxGuard API is running"}
 
 @app.get("/health")
 def health():
