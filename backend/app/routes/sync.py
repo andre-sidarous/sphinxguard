@@ -79,6 +79,13 @@ def user_transactions(user = Depends(get_current_user)):
             fraud_score = float(model.predict_proba(data)[0][1])
             is_flagged = bool(fraud_score > 0.5)
 
+            # get SHAP reasons
+            shap_vals = explainer.shap_values(data)[0]
+            feature_names = data.columns.tolist()
+            shap_dict = dict(zip(feature_names, shap_vals))
+            top_reasons = sorted(shap_dict.items(), key=lambda x: abs(x[1]), reverse=True)[:3]
+            reasons = [{"feature": str(k), "impact": float(v)} for k, v in top_reasons]
+
             # save transaction
             transaction_row = supabase.table("transactions").upsert({
                 "user_id": str(user.id),
@@ -99,7 +106,7 @@ def user_transactions(user = Depends(get_current_user)):
                 "user_id": str(user.id),
                 "score": fraud_score,
                 "is_flagged": is_flagged,
-                "reasons": []
+                "reasons": reasons
             }).execute()
 
             synced += 1

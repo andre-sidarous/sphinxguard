@@ -105,6 +105,13 @@ export default function DashboardPage() {
                         {syncing ? 'Syncing...' : 'Sync'}
                     </button>
                     <button
+                        onClick={() => router.push('/alerts')}
+                        className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-sm transition-colors"
+                    >
+                        <AlertTriangle size={16} className="text-yellow-400" />
+                        Alerts {flaggedCount > 0 && <span className="bg-yellow-400 text-gray-900 text-xs px-1.5 rounded-full">{flaggedCount}</span>}
+                    </button>
+                    <button
                         onClick={handleLogout}
                         className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
                     >
