@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast'
-import { ShieldCheck, AlertTriangle, CreditCard, LogOut, RefreshCw } from 'lucide-react'
+import { ShieldCheck, AlertTriangle, CreditCard, LogOut, RefreshCw, MessageSquare } from 'lucide-react'
 import PlaidLink from '@/components/PlaidLink'
 
 interface Transaction {
@@ -110,6 +110,13 @@ export default function DashboardPage() {
                     >
                         <AlertTriangle size={16} className="text-yellow-400" />
                         Alerts {flaggedCount > 0 && <span className="bg-yellow-400 text-gray-900 text-xs px-1.5 rounded-full">{flaggedCount}</span>}
+                    </button>
+                    <button
+                        onClick={() => router.push('/chat')}
+                        className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-sm transition-colors"
+                    >
+                        <MessageSquare size={16} />
+                        AI Chat
                     </button>
                     <button
                         onClick={handleLogout}
