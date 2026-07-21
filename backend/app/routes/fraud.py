@@ -3,11 +3,13 @@ import joblib
 import numpy as np
 import pandas as pd
 from pydantic import BaseModel
+from pathlib import Path
 
 router = APIRouter(prefix="/fraud", tags=["fraud"])
 
-model = joblib.load("../ml/models/fraud_model.pkl")
-explainer = joblib.load("../ml/models/shap_explainer.pkl")
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+model = joblib.load(BASE_DIR / "models" / "fraud_model.pkl")
+explainer = joblib.load(BASE_DIR / "models" / "shap_explainer.pkl")
 
 class TransactionInput(BaseModel):
     amount: float

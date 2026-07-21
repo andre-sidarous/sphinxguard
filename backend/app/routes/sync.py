@@ -12,9 +12,9 @@ import joblib
 from datetime import datetime, timedelta
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
-model = joblib.load(BASE_DIR / "ml" / "models" / "fraud_model.pkl")
-explainer = joblib.load(BASE_DIR / "ml" / "models" / "shap_explainer.pkl")
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+model = joblib.load(BASE_DIR / "models" / "fraud_model.pkl")
+explainer = joblib.load(BASE_DIR / "models" / "shap_explainer.pkl")
 
 router = APIRouter(prefix="/sync", tags=["sync"])
 security = HTTPBearer()
