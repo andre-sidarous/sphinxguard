@@ -12,8 +12,8 @@ app = FastAPI(title="SphinxGuard API", version="1.0.0")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000"
-        "https://sphinxguard.vercel.app"
+        "http://localhost:3000",
+        "https://sphinxguard.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
